@@ -196,11 +196,11 @@ class DatetimeField(Field):
 
     def to_db_value(self, value: datetime.datetime, instance) -> datetime.datetime:
         if self.auto_now:
-            value = datetime.datetime.utcnow()
+            value = datetime.datetime.now()
             setattr(instance, self.model_field_name, value)
             return value
         if self.auto_now_add and getattr(instance, self.model_field_name) is None:
-            value = datetime.datetime.utcnow()
+            value = datetime.datetime.now()
             setattr(instance, self.model_field_name, value)
             return value
         return value
